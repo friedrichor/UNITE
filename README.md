@@ -19,7 +19,7 @@
 ## 👀 Overall
 
 <p align="center">
-    <img src="assets/overall_task.png" width="50%">
+    <img src="assets/overall_task.png" width="80%">
     <br>
     We develop a universal multimodal embedder <strong>UNITE</strong>, allowing for a unified representation of arbitrary multimodal contents.
 </p>
@@ -27,7 +27,7 @@
 ## 🔭 UNITE
 
 <p align="center">
-    <img src="assets/overall_model.png" width="70%">
+    <img src="assets/overall_model.png" width="100%">
     <br>
     Overview of <strong>UNITE</strong>,: (a) Model architecture utilizing LMM as the backbone, supporting multimodal inputs (text, images, videos, and their combinations). (b) Similarity matrix after applying MAMCL, which enables focused contrastive learning by restricting comparisons to samples sharing the same target modality, thus reducing inter-modal interference.
 </p>
@@ -35,21 +35,21 @@
 ## 🔍 Dataset
 
 <p align="center">
-    <img src="assets/data_adaptation_retrieval.png" width="50%">
+    <img src="assets/data_adaptation_retrieval.png" width="90%">
 </p>
 <p align="center">
-    <img src="assets/data_instrction_tuning.png" width="50%">
+    <img src="assets/data_instrction_tuning.png" width="90%">
 </p>
 
 ## 🏆 Performance
 
 <p align="center">
-    <img src="assets/radar_fine_retrieval.png" width="40%">
+    <img src="assets/radar_fine_retrieval.png" width="60%">
     <br>
     Performance comparison on fine-grained video-text benchmark (CaReBench) and image-text benchmarks (ShareGPT4V, Urban1K, DOCCI). Our UNITE achieves the overall optimal performance.
 </p>
 <p align="center">
-    <img src="assets/bar_instruct_retrieval.png" width="70%">
+    <img src="assets/bar_instruct_retrieval.png" width="90%">
     <br>
     Performance comparison on instruction-based retrieval benchmarks (left: MMEB and right: WebVid-CoVR). Our UNITE achieves leading performance on various tasks, even surpassing models with larger parameter scales.
 </p>
