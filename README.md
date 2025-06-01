@@ -6,15 +6,17 @@
 
 ## 🔥 News
 
+- [2025/06/01] We release our training code and inference code.
+- [2025/05/28] We release our models and training datasets to [HuggingFace](https://huggingface.co/collections/friedrichor/unite-682da30c4540abccd3da3a6b).
 - [2025/05/26] We release our paper: [Modality Curation: Building Universal Embeddings for Advanced Multimodal Information Retrieval](https://arxiv.org/abs/2505.19650)
 
-## Release Plan
+## 🛰️ Release Plan
 
 - [X] Paper
 - [X] Models, Datasets
-- [ ] Inference code
+- [X] Inference code
+- [X] Training code
 - [ ] Evaluation code
-- [ ] Training code
 
 ## 👀 Overall
 
@@ -32,15 +34,6 @@
     Overview of <strong>UNITE</strong>,: (a) Model architecture utilizing LMM as the backbone, supporting multimodal inputs (text, images, videos, and their combinations). (b) Similarity matrix after applying MAMCL, which enables focused contrastive learning by restricting comparisons to samples sharing the same target modality, thus reducing inter-modal interference.
 </p>
 
-## 🔍 Dataset
-
-<p align="center">
-    <img src="assets/data_adaptation_retrieval.png" width="90%">
-</p>
-<p align="center">
-    <img src="assets/data_instrction_tuning.png" width="90%">
-</p>
-
 ## 🏆 Performance
 
 <p align="center">
@@ -53,6 +46,22 @@
     <br>
     Performance comparison on instruction-based retrieval benchmarks (left: MMEB and right: WebVid-CoVR). Our UNITE achieves leading performance on various tasks, even surpassing models with larger parameter scales.
 </p>
+
+
+
+## Quick Start
+
+
+### Installation
+
+```
+conda create -n unite python=3.10 -y
+conda activate unite
+
+pip install torch==2.5.0 torchvision==0.20.0 torchaudio==2.5.0
+pip install flash-attn --no-build-isolation
+pip install -r requirements.txt
+```
 
 ## 📋 Citation
 
