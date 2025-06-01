@@ -70,7 +70,7 @@ If you find our work helpful, feel free to give us a cite.
 ```
 @article{kong2025modality,
   title={Modality Curation: Building Universal Embeddings for Advanced Multimodal Information Retrieval},
-  author={Kong, Fanheng and Zhang, Jingyuan and Liu, Yahui and Zhang, Hongzhi and Feng, Shi and Yang, Xiaocui and Wang, Daling and Tian, Yu and W., Victoria and Zhang, Fuzheng and others},
+  author={Kong, Fanheng and Zhang, Jingyuan and Liu, Yahui and Zhang, Hongzhi and Feng, Shi and Yang, Xiaocui and Wang, Daling and Tian, Yu and W., Victoria and Zhang, Fuzheng and Zhou, Guorui},
   journal={arXiv preprint arXiv:2505.19650},
   year={2025}
 }
