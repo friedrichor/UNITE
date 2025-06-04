@@ -1,0 +1,14 @@
+{
+    "zero_optimization": {
+        "stage": 0,
+        "overlap_comm": false
+    },
+    "fp16": {
+        "enabled": false
+    },
+    "bf16": {
+        "enabled": "auto"
+    },
+    "train_batch_size": "auto",
+    "train_micro_batch_size_per_gpu": "auto"
+}
