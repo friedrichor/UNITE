@@ -1,11 +1,10 @@
 import torch
 from transformers import AutoTokenizer, AutoProcessor
-from unite.model.qwen_vl_utils import process_vision_info
+from qwen_vl_utils import process_vision_info
 from modeling_unite import UniteQwen2VL
 
 
-model_path = '/aigc_sgply_ssd/kongfanheng/models/Unite-Instruct-Qwen2-VL-7B'
-# model_path = '/aigc_sgply_ssd/kongfanheng/models/Unite-Base-Qwen2-VL-7B'
+model_path = 'friedrichor/Unite-Base-Qwen2-VL-2B'
 model = UniteQwen2VL.from_pretrained(
     model_path, 
     torch_dtype=torch.bfloat16,
@@ -25,8 +24,7 @@ tokenizer = AutoTokenizer.from_pretrained(model_path, use_fast=False)
 processor = AutoProcessor.from_pretrained(model_path, min_pixels=256*28*28, max_pixels=1280*28*28)
 
 def process_messages(msg):
-    text = processor.apply_chat_template(msg, tokenize=False, add_generation_prompt=False)
-    # print(text)
+    text = processor.apply_chat_template(msg, tokenize=False, add_generation_prompt=True) + "<|endoftext|>"
     image_inputs, video_inputs = process_vision_info(msg)
     inputs = processor(
         text=[text], 
@@ -39,7 +37,6 @@ def process_messages(msg):
 
     return inputs
 
-
 ## ============================== Text-Image ==============================
 messages_txt = [
     {
@@ -48,12 +45,6 @@ messages_txt = [
             {"type": "text", "text": "The book titled 'Riding with Reindeer - A Bicycle Odyssey through Finland, Lapland, and the Arctic' provides a detailed account of a journey that explores the regions of Lapland and the Arctic, focusing on the experience of riding with reindeer."},
             {"type": "text", "text": "\nSummary above sentence in one word:"},
         ],
-    },
-    {
-        "role": "assistant",
-        "content": [
-            {"type": "text", "text": "<|endoftext|>"},
-        ],
     }
 ]
 
@@ -61,14 +52,8 @@ messages_img = [
     {
         "role": "user",
         "content": [
-            {"type": "image", "image": "https://images-na.ssl-images-amazon.com/images/I/518L0uDGe0L.jpg"},
+            {"type": "image", "image": "./examples/518L0uDGe0L.jpg"},
             {"type": "text", "text": "\nSummary above image in one word:"},
-        ],
-    },
-    {
-        "role": "assistant",
-        "content": [
-            {"type": "text", "text": "<|endoftext|>"},
         ],
     }
 ]
@@ -83,21 +68,15 @@ with torch.no_grad():
     print(f"embeddings_img.shape: {embeddings_img.shape}")
 
     print(torch.matmul(embeddings_txt, embeddings_img.T))
-    # tensor([[0.9102]], dtype=torch.bfloat16)
+    # tensor([[0.7500]], dtype=torch.bfloat16)
 
 ## ============================== Text-Video ==============================
 messages_txt = [
     {
         "role": "user",
         "content": [
-            {"type": "text", "text": "Pictorial upper view sunset beams light waterfall stone cascade and fresh green tropical trees"},
+            {"type": "text", "text": "Timelapse of stormy clouds over open sea and snowcapped mountain"},
             {"type": "text", "text": "\nSummary above sentence in one word:"},
-        ],
-    },
-    {
-        "role": "assistant",
-        "content": [
-            {"type": "text", "text": "<|endoftext|>"},
         ],
     }
 ]
@@ -108,18 +87,12 @@ messages_vid = [
         "content": [
             {
                 "type": "video", 
-                "video": "./examples/stock-footage-pictorial-upper-view-sunset-beams-light-waterfall-stone-cascade-and-fresh-green-tropical-trees.mp4",
+                "video": "./examples/stock-footage-timelapse-of-stormy-clouds-over-open-sea-and-snowcapped-mountain.mp4",
                 "max_pixels": 360 * 420, 
                 "fps": 1,
                 "max_frames": 32
             },
             {"type": "text", "text": "\nSummary above video in one word:"},
-        ],
-    },
-    {
-        "role": "assistant",
-        "content": [
-            {"type": "text", "text": "<|endoftext|>"},
         ],
     }
 ]
@@ -132,22 +105,16 @@ with torch.no_grad():
     embeddings_vid = model(**inputs_vid)  # [1, 1536]
 
     print(torch.matmul(embeddings_txt, embeddings_vid.T))
-    # tensor([[0.8516]], dtype=torch.bfloat16)
+    # tensor([[0.5664]], dtype=torch.bfloat16)
 
 ## ============================== Fused Modal ==============================
 messages_qry = [
     {
         "role": "user",
         "content": [
-            {"type": "image", "image": "./examples/1408px-Lilium_philadelphicum_var._philadelphicum.jpg"},
-            {"type": "text", "text": "What part of the us is this plant native to?"},
+            {"type": "image", "image": "./examples/oven_05011373.jpg"},
+            {"type": "text", "text": "What is the name of this place?"},
             {"type": "text", "text": "\nSummary above sentence and image in one word:"},
-        ],
-    },
-    {
-        "role": "assistant",
-        "content": [
-            {"type": "text", "text": "<|endoftext|>"},
         ],
     }
 ]
@@ -156,14 +123,9 @@ messages_tgt = [
     {
         "role": "user",
         "content": [
-            {"type": "text", "text": "Midwestern"},
-            {"type": "text", "text": "\nSummary above sentence in one word:"},
-        ],
-    },
-    {
-        "role": "assistant",
-        "content": [
-            {"type": "text", "text": "<|endoftext|>"},
+            {"type": "image", "image": "./examples/Q673659.jpg"},
+            {"type": "text", "text": "Marina Beach."},
+            {"type": "text", "text": "\nSummary above sentence and image in one word:"},
         ],
     }
 ]
@@ -176,4 +138,4 @@ with torch.no_grad():
     embeddings_tgt = model(**inputs_tgt)  # [1, 1536]
 
     print(torch.matmul(embeddings_qry, embeddings_tgt.T))
-    # tensor([[0.8945]], dtype=torch.bfloat16)
+    # tensor([[0.7695]], dtype=torch.bfloat16)
