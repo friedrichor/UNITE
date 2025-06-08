@@ -63,10 +63,10 @@ pip install -r requirements.txt
 
 ### Data Preparation
 
-- Retrieval Adaptation: [Unite-Base-Retrieval-Train](https://huggingface.co/datasets/friedrichor/Unite-Base-Retrieval-Train)
+- Retrieval Adaptation: [Unite-Base-Retrieval-Train](https://huggingface.co/datasets/friedrichor/Unite-Base-Retrieval-Train)  
 Please download the raw videos of `Tarsier2-Recap-585K` from [omni-research/Tarsier2-Recap-585](https://huggingface.co/datasets/omni-research/Tarsier2-Recap-585K), refer to [here](https://huggingface.co/datasets/friedrichor/Unite-Base-Retrieval-Train/blob/main/Tarsier2-Recap-585K/README.md).
 
-- Instruction Tuning: [Unite-Instruct-Retrieval-Train](https://huggingface.co/datasets/friedrichor/Unite-Instruct-Retrieval-Train)
+- Instruction Tuning: [Unite-Instruct-Retrieval-Train](https://huggingface.co/datasets/friedrichor/Unite-Instruct-Retrieval-Train)  
 Please download the raw images of `MMEB-train` from [TIGER-Lab/MMEB-train](https://huggingface.co/datasets/TIGER-Lab/MMEB-train), refer to [here](https://huggingface.co/datasets/friedrichor/Unite-Instruct-Retrieval-Train/blob/main/MMEB-train/README.md).
 
 
@@ -97,7 +97,7 @@ python inference.py
 
 The codebase of UNITE is adapted from [LLaVA-NeXT](https://github.com/LLaVA-VL/LLaVA-NeXT) and [FastChat](https://github.com/lm-sys/FastChat). We are also grateful for the following projects our UNITE arise from:
 - [GME](https://github.com/BIGBALLON/GME-Search), [LamRA](https://github.com/Code-kunkun/LamRA), [VLM2Vec](https://github.com/TIGER-AI-Lab/VLM2Vec), [E5-V](https://github.com/kongds/E5-V)
-- [Qwen2-VL](https://github.com/QwenLM/Qwen2.5-VL), [InternVideo 2](https://github.com/OpenGVLab/InternVideo)
+- [Qwen2-VL](https://github.com/QwenLM/Qwen2.5-VL), [InternVideo2](https://github.com/OpenGVLab/InternVideo)
 - [BEIR](https://huggingface.co/BeIR), [sentence-transformers](https://huggingface.co/sentence-transformers), [img2dataset](https://github.com/rom1504/img2dataset)
 
 ## 📋 Citation

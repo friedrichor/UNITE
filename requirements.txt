@@ -1,0 +1,8 @@
+transformers==4.47.1 
+accelerate==1.6.0
+deepspeed==0.16.5
+peft==0.15.1 
+qwen-vl-utils[decord]==0.0.8
+opencv-python
+pillow
+wandb
