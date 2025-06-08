@@ -48,7 +48,13 @@
     Performance comparison on instruction-based retrieval benchmarks (left: MMEB and right: WebVid-CoVR).
 </p>
 
-## Quick Start
+## 📷 Visualization Results
+
+<p align="center">
+    <img src="assets/visualization_case.png" width="80%">
+</p>
+
+## 🚀 Quick Start
 
 ### Installation
 
