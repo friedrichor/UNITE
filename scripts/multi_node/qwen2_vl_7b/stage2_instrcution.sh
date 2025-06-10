@@ -49,7 +49,7 @@ deepspeed --num_nodes ${nnodes} --num_gpus ${num_gpus} --hostfile ${hostfile} --
     --prompt_version $PROMPT_VERSION \
     --lazy_preprocess $LAZY_PREPROCESS \
     --temp $temperature \
-    --max_frames $max_frames \
+    --max_frames $MAX_FRAMES \
     --has_negative $HAS_NEGATIVE \
     --dual_loss $DUAL_LOSS \
     --target_modal_mask $TARGET_MODAL_MASK \
