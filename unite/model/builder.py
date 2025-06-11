@@ -8,11 +8,11 @@ from unite.model import *
 from unite.utils import *
 
 
-
 def load_pretrained_model(model_path, model_base, device_map="auto", attn_implementation="flash_attention_2", **kwargs):
     kwargs = {"device_map": device_map}
     kwargs["torch_dtype"] = torch.bfloat16
 
+    processor_path = model_path
     # Load model
     if model_base is not None:
         if os.path.exists(os.path.join(model_path, "adapter_model.safetensors")):
@@ -29,6 +29,8 @@ def load_pretrained_model(model_path, model_base, device_map="auto", attn_implem
             model = model.merge_and_unload()
             print("Convert to FP16...")
             model.to(torch.bfloat16)
+
+            processor_path = model_base
         else:
             tokenizer = AutoTokenizer.from_pretrained(model_path, use_fast=False)
             model = UniteQwen2VL.from_pretrained(
@@ -41,7 +43,7 @@ def load_pretrained_model(model_path, model_base, device_map="auto", attn_implem
         )
 
     processor = AutoProcessor.from_pretrained(
-        model_path,
+        processor_path,
         min_pixels=256*28*28, max_pixels=1280*28*28
     )
     
