@@ -16,7 +16,7 @@ TASK_CONFIG = {
         data_path='./data/eval/MSCOCO/mscoco_test.json'
     ),
     'MSR_VTT_1K_A': TaskConfig(
-        data_path='./data/eval/msrvtt_test_1k.json',
+        data_path='./data/eval/MSR-VTT/msrvtt_test_1k.json',
         sampling_config=dict(nframes=48),
         source='MSR-VTT',
     ),
@@ -67,7 +67,7 @@ TASK_CONFIG = {
 
     # Composed Video Retrieval
     'WebVid-CoVR': dict(
-        data_path='./data/eval/webvid8m_covr_test.json',
+        data_path='./data/eval/WebVid-CoVR/webvid8m_covr_test.json',
         sampling_config=dict(nframes=16),
         source='WebVid-10M'
     ),

@@ -9,8 +9,11 @@ from unite.utils import *
 
 
 def load_pretrained_model(model_path, model_base, device_map="auto", attn_implementation="flash_attention_2", **kwargs):
-    kwargs = {"device_map": device_map}
+    kwargs["device_map"] = device_map
     kwargs["torch_dtype"] = torch.bfloat16
+
+    min_pixels = kwargs.pop('min_pixels', 256*28*28)
+    max_pixels = kwargs.pop('max_pixels', 1280*28*28)
 
     processor_path = model_path
     # Load model
@@ -44,7 +47,7 @@ def load_pretrained_model(model_path, model_base, device_map="auto", attn_implem
 
     processor = AutoProcessor.from_pretrained(
         processor_path,
-        min_pixels=256*28*28, max_pixels=1280*28*28
+        min_pixels=min_pixels, max_pixels=max_pixels,
     )
     
     print_green(f"Model Class: {model.__class__.__name__}")
