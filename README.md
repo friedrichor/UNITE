@@ -95,8 +95,8 @@ bash scripts/multi_node/qwen2_vl_2b/stage2_instrcution.sh
 You can get the simplest inference code from [Huggingface QuickStart](https://huggingface.co/friedrichor/Unite-Base-Qwen2-VL-2B#quickstart), or run the following command.
 
 ```
-cd inference_demo
-python inference.py
+cd inference
+python inference_demo.py
 ```
 
 ## 🙇 Acknowledgments
