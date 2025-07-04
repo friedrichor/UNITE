@@ -49,12 +49,6 @@ messages_txt1 = [
             {"type": "text", "text": "The book titled 'Riding with Reindeer - A Bicycle Odyssey through Finland, Lapland, and the Arctic' provides a detailed account of a journey that explores the regions of Lapland and the Arctic, focusing on the experience of riding with reindeer."},
             {"type": "text", "text": "\nSummary above sentence in one word:"},
         ],
-    },
-    {
-        "role": "assistant",
-        "content": [
-            {"type": "text", "text": "<|endoftext|>"},
-        ],
     }
 ]
 
@@ -64,12 +58,6 @@ messages_txt2 = [
         "content": [
             {"type": "text", "text": "The Cherished Teddies 116466 Best Teacher is a teddy bear holding a sign that proudly declares it as the best teacher."},
             {"type": "text", "text": "\nSummary above sentence in one word:"},
-        ],
-    },
-    {
-        "role": "assistant",
-        "content": [
-            {"type": "text", "text": "<|endoftext|>"},
         ],
     }
 ]
@@ -83,12 +71,6 @@ messages_img1 = [
             {"type": "image", "image": "./examples/518L0uDGe0L.jpg"},
             {"type": "text", "text": "\nSummary above image in one word:"},
         ],
-    },
-    {
-        "role": "assistant",
-        "content": [
-            {"type": "text", "text": "<|endoftext|>"},
-        ],
     }
 ]
 
@@ -98,12 +80,6 @@ messages_img2 = [
         "content": [
             {"type": "image", "image": "./examples/116466.jpg"},
             {"type": "text", "text": "\nSummary above image in one word:"},
-        ],
-    },
-    {
-        "role": "assistant",
-        "content": [
-            {"type": "text", "text": "<|endoftext|>"},
         ],
     }
 ]
@@ -120,5 +96,5 @@ with torch.no_grad():
     print(f"embeddings_img.shape: {embeddings_img.shape}")
 
     print(torch.matmul(embeddings_txt, embeddings_img.T))
-    # tensor([[0.7461, 0.0092],
-    #         [0.0245, 0.6367]], dtype=torch.bfloat16)
+    # tensor([[0.7578, 0.0270],
+    #         [0.0459, 0.6406]], dtype=torch.bfloat16)
